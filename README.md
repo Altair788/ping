@@ -4,7 +4,7 @@
 
 ## Usage
 
-Требуется Python 3.10+ и менеджер пакетов [uv](https://docs.astral.sh/uv/) (`pip install uv` или `brew install uv`).
+Требуется Python 3.10+ и менеджер пакетов [uv](https://docs.astral.sh/uv/). Самый надёжный способ — `pipx install uv` (кроссплатформенный, обходит PEP 668 на Homebrew Python). Альтернативы: [standalone installer](https://docs.astral.sh/uv/getting-started/installation/#standalone-installer) (`curl -LsSf https://astral.sh/uv/install.sh | sh`) или `brew install uv` на macOS.
 
 ### Установка зависимостей
 
