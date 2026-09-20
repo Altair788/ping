@@ -96,14 +96,20 @@ async def run_measurement(url: str, count: int, timeout: float) -> SpeedReport:
             try:
                 result = await measure_single(client, url, timeout)
             except Exception as exc:  # noqa: BLE001 — намеренно глотаем ради partial failure
-                print(f"  [{i}/{count}] FAILED: {type(exc).__name__}: {exc}", file=sys.stderr)
+                print(
+                    f"  [{i}/{count}] FAILED: {type(exc).__name__}: {exc}",
+                    file=sys.stderr,
+                )
                 report = SpeedReport(
                     url=report.url,
                     results=report.results,
                     failed_count=report.failed_count + 1,
                 )
                 continue
-            print(f"  [{i}/{count}] {result.bytes} bytes in {result.duration_s:.2f}s", file=sys.stderr)
+            print(
+                f"  [{i}/{count}] {result.bytes} bytes in {result.duration_s:.2f}s",
+                file=sys.stderr,
+            )
             report = SpeedReport(
                 url=report.url,
                 results=report.results + [result],
@@ -138,7 +144,8 @@ def print_report(report: SpeedReport) -> str:
         for i, r in enumerate(report.results, start=1):
             mbps = r.bytes / r.duration_s / _MIB if r.duration_s > 0 else 0.0
             lines.append(
-                f"  [{i}/{total}] {_fmt_mib(r.bytes)} МБ / {r.duration_s:.2f} с = {_fmt_mbps(mbps)} МБ/с"
+                f"  [{i}/{total}] {_fmt_mib(r.bytes)} МБ / "
+                f"{r.duration_s:.2f} с = {_fmt_mbps(mbps)} МБ/с"
             )
 
         lines.append("")
@@ -207,7 +214,7 @@ def main() -> int:
 
     try:
         args = parser.parse_args()
-    except SystemExit as exc:
+    except SystemExit:
         # argparse сам печатает usage в stderr и зовёт sys.exit(2)
         return 2
 
