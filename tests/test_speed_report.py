@@ -6,7 +6,7 @@ from pathlib import Path
 # Делаем ping.py доступным для импорта при запуске pytest из корня.
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from ping import SingleRequestResult, SpeedReport  # noqa: E402
+from ping import SingleRequestResult, SpeedReport
 
 
 def _make_report(*pairs: tuple[int, float]) -> SpeedReport:
