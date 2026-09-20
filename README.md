@@ -14,6 +14,19 @@ uv sync --extra dev
 
 Эта команда создаст `.venv/` (или обновит существующий), прочитает `pyproject.toml` и `uv.lock`, установит `httpx` и `pytest` со всеми транзитивными зависимостями.
 
+### Без uv (быстрый путь)
+
+Если не хочется ставить `uv`, всё работает через стандартный venv + pip:
+
+```
+python3 -m venv .venv
+source .venv/bin/activate
+pip install httpx pytest
+python ping.py --url https://speed.cloudflare.com/__down?bytes=10000000
+```
+
+После `source .venv/bin/activate` все команды ниже (`uv run ...`) можно заменить на прямой вызов (`python ping.py ...`, `pytest tests/ -v`).
+
 ### Базовый замер
 
 ```
