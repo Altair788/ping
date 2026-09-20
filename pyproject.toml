@@ -1,0 +1,17 @@
+[project]
+name = "ping"
+version = "0.1.0"
+description = "CLI скрипт-замерятель скорости интернета через последовательные HTTP GET"
+requires-python = ">=3.10"
+dependencies = [
+    "httpx>=0.28",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=9.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
